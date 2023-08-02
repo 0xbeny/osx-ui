@@ -7,7 +7,7 @@ import {
   DaoDetails,
   Erc20TokenDetails,
   Erc20WrapperTokenDetails,
-} from '@aragon/sdk-client';
+} from '@xinfin/osx-sdk-client';
 import {validateGovernanceTokenAddress} from 'utils/validators';
 
 export const useExistingToken = ({

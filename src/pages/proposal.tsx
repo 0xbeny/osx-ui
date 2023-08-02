@@ -6,8 +6,8 @@ import {
   TokenVotingProposal,
   VoteValues,
   VotingMode,
-} from '@aragon/sdk-client';
-import {DaoAction, ProposalStatus} from '@aragon/sdk-client-common';
+} from '@xinfin/osx-sdk-client';
+import {DaoAction, ProposalStatus} from '@xinfin/osx-client-common';
 import {
   Breadcrumb,
   ButtonText,

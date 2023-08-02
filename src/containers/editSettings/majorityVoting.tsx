@@ -1,4 +1,4 @@
-import {DaoDetails, VotingMode, VotingSettings} from '@aragon/sdk-client';
+import {DaoDetails, VotingMode, VotingSettings} from '@xinfin/osx-sdk-client';
 import {
   AlertInline,
   ButtonText,

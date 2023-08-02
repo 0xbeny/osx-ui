@@ -1,4 +1,4 @@
-import {DaoDetails} from '@aragon/sdk-client';
+import {DaoDetails} from '@xinfin/osx-sdk-client';
 import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
 
 import {PendingDao} from 'context/apolloClient';

@@ -1,4 +1,4 @@
-import {DaoSortBy} from '@aragon/sdk-client';
+import {DaoSortBy} from '@xinfin/osx-sdk-client';
 import {
   ButtonGroup,
   ButtonText,

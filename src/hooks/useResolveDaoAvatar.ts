@@ -1,4 +1,4 @@
-import {Client} from '@aragon/sdk-client';
+import {Client} from '@xinfin/osx-sdk-client';
 import {useClient} from './useClient';
 import {useState, useEffect, useCallback} from 'react';
 import {resolveDaoAvatarIpfsCid} from 'utils/library';

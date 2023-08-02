@@ -1,6 +1,6 @@
 import {useApolloClient} from '@apollo/client';
-import {TransferType} from '@aragon/sdk-client';
-import {TokenType} from '@aragon/sdk-client-common';
+import {TransferType} from '@xinfin/osx-sdk-client';
+import {TokenType} from '@xinfin/osx-client-common';
 
 import {useNetwork} from 'context/network';
 import {constants} from 'ethers';

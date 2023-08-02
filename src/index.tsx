@@ -23,14 +23,14 @@ import App from './app';
 import {EthereumClient, w3mConnectors, w3mProvider} from '@web3modal/ethereum';
 import {Web3Modal} from '@web3modal/react';
 import {configureChains, createConfig, WagmiConfig} from 'wagmi';
-import {mainnet, goerli, polygon, polygonMumbai} from 'wagmi/chains';
-import {infuraProvider} from 'wagmi/providers/infura';
+import {mainnet, goerli, polygon, polygonMumbai, xdc, xdcTestnet} from 'wagmi/chains';
+import {publicProvider} from 'wagmi/providers/public';
 
-const chains = [mainnet, goerli, polygon, polygonMumbai];
+const chains = [mainnet, goerli, polygon, polygonMumbai,xdc, xdcTestnet];
 
 const {publicClient} = configureChains(chains, [
   w3mProvider({projectId: walletConnectProjectID}),
-  infuraProvider({apiKey: infuraApiKey}),
+  publicProvider(),
 ]);
 
 const wagmiConfig = createConfig({

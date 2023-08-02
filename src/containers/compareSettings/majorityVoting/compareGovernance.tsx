@@ -2,7 +2,7 @@ import {
   Erc20TokenDetails,
   VotingMode,
   VotingSettings,
-} from '@aragon/sdk-client';
+} from '@xinfin/osx-sdk-client';
 import React from 'react';
 import {useFormContext} from 'react-hook-form';
 import {useTranslation} from 'react-i18next';

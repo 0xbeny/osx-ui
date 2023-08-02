@@ -1,4 +1,4 @@
-import {InstalledPluginListItem} from '@aragon/sdk-client';
+import {InstalledPluginListItem} from '@xinfin/osx-sdk-client';
 import {
   ButtonIcon,
   CardText,

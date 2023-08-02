@@ -3,8 +3,8 @@ import {
   MultisigProposal,
   ProposalSortBy,
   TokenVotingProposal,
-} from '@aragon/sdk-client';
-import {ProposalStatus, SortDirection} from '@aragon/sdk-client-common';
+} from '@xinfin/osx-sdk-client';
+import {ProposalStatus, SortDirection} from '@xinfin/osx-client-common';
 import {useCallback, useEffect, useState} from 'react';
 
 import {

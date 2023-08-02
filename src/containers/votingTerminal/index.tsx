@@ -1,5 +1,5 @@
-import {VoteValues} from '@aragon/sdk-client';
-import {ProposalStatus} from '@aragon/sdk-client-common';
+import {VoteValues} from '@xinfin/osx-sdk-client';
+import {ProposalStatus} from '@xinfin/osx-client-common';
 import {
   AlertCard,
   AlertInline,

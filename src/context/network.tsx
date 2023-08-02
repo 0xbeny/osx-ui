@@ -26,7 +26,7 @@ type NetworkContext = {
 };
 
 const NetworkContext = createContext<NetworkContext>({
-  network: 'ethereum',
+  network: 'apothem',
   setNetwork: () => {},
   isL2Network: false,
   networkUrlSegment: undefined,
@@ -87,6 +87,7 @@ export function NetworkProvider({children}: NetworkProviderProps) {
   const {chain} = useWagmiNetwork();
   const chainId = chain?.id || 0;
   const {status: wagmiStatus} = useAccount();
+  
   const status = wagmiStatus === 'reconnecting' ? 'connecting' : wagmiStatus;
   const [networkState, setNetworkState] = useState<
     SupportedNetworks | 'unsupported'
@@ -96,7 +97,7 @@ export function NetworkProvider({children}: NetworkProviderProps) {
     setNetworkState(determineNetwork(networkUrlSegment, chainId, status));
   }, [chainId, networkUrlSegment, status]);
 
-  const isL2Network = ['polygon', 'mumbai'].includes(networkState);
+  const isL2Network = ['polygon', 'mumbai', 'apothem'].includes(networkState);
 
   const changeNetwork = useCallback(
     (network: SupportedNetworks) => {

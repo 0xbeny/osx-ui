@@ -1,4 +1,4 @@
-import {DaoQueryParams} from '@aragon/sdk-client';
+import {DaoQueryParams} from '@xinfin/osx-sdk-client';
 import {
   InfiniteData,
   UseQueryResult,

@@ -1,4 +1,4 @@
-import {MultisigVotingSettings, VotingSettings} from '@aragon/sdk-client';
+import {MultisigVotingSettings, VotingSettings} from '@xinfin/osx-sdk-client';
 import {useEffect, useState} from 'react';
 import {HookData, SupportedVotingSettings} from 'utils/types';
 

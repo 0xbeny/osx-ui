@@ -106,7 +106,7 @@ async function fetchTokenData(
     TOP_ETH_SYMBOL_ADDRESSES[symbol.toLowerCase()]
   ) {
     fetchAddress = TOP_ETH_SYMBOL_ADDRESSES[symbol.toLowerCase()];
-    fetchNetwork = 'ethereum';
+    fetchNetwork = 'apothem';
   }
 
   // network unsupported, or testnet

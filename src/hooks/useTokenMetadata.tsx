@@ -1,6 +1,6 @@
 import {useApolloClient} from '@apollo/client';
-import {AssetBalance} from '@aragon/sdk-client';
-import {TokenType} from '@aragon/sdk-client-common';
+import {AssetBalance} from '@xinfin/osx-sdk-client';
+import {TokenType} from '@xinfin/osx-client-common';
 import {constants} from 'ethers';
 import {useEffect, useState} from 'react';
 

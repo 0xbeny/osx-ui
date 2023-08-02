@@ -23,7 +23,7 @@ import {
   TokenVotingClient,
   UnwrapTokensStep,
   WrapTokensStep,
-} from '@aragon/sdk-client';
+} from '@xinfin/osx-sdk-client';
 import {PluginTypes, usePluginClient} from 'hooks/usePluginClient';
 import {useClient} from 'hooks/useClient';
 import {generatePath, useLocation, useNavigate} from 'react-router-dom';

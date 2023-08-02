@@ -5649,6 +5649,63 @@
   dependencies:
     tslib "^2.3.0"
 
+"@xinfin/osx-client-common@1.2.1-rc8":
+  version "1.2.1-rc8"
+  resolved "https://registry.yarnpkg.com/@xinfin/osx-client-common/-/osx-client-common-1.2.1-rc8.tgz#19669bf895a708e4387bb2d38929bae2f20b9c47"
+  integrity sha512-PXbCsXoKUcOtTkC26KPfUXOSIWFzpS9IIqMticmZ02plw3fgknkXYI3OxE6ybjY5TCm4sjAJnnd7w1JmXKkmPg==
+  dependencies:
+    "@ethersproject/abstract-signer" "^5.5.0"
+    "@ethersproject/bignumber" "^5.6.0"
+    "@ethersproject/constants" "^5.6.0"
+    "@ethersproject/contracts" "^5.5.0"
+    "@ethersproject/providers" "^5.5.0"
+    "@ethersproject/wallet" "^5.6.0"
+    "@xinfin/osx-ethers" "1.3.0-rc1"
+    "@xinfin/osx-sdk-common" "1.5.1"
+    "@xinfin/osx-sdk-ipfs" "1.1.1"
+    graphql "^16.5.0"
+    graphql-request "^4.3.0"
+
+"@xinfin/osx-ethers@1.3.0-rc1":
+  version "1.3.0-rc1"
+  resolved "https://registry.yarnpkg.com/@xinfin/osx-ethers/-/osx-ethers-1.3.0-rc1.tgz#7143f9d4530aaa431ffb8b9de15df08f03a8e8ee"
+  integrity sha512-6eDamUd88b3YhjYApY/UIsFV/ZF5MlbLwja9882dN3UsNq8FLettaR2E1Uun46yJFPbZGD2chlRnJUBTu/baHA==
+  dependencies:
+    ethers "^5.6.2"
+
+"@xinfin/osx-sdk-client@^1.10.1-rc21":
+  version "1.10.1-rc21"
+  resolved "https://registry.yarnpkg.com/@xinfin/osx-sdk-client/-/osx-sdk-client-1.10.1-rc21.tgz#a4d2132f2f8f299ffcc6299fadb00b2e4a4d51f2"
+  integrity sha512-TW9Vjk9Dytppt6QZmlrtTqX8Jg9SD01osWs4+eqLpAg7CTcimR6FEcsqPKyq7Pw0ju+EpWfsCgOtgH79eYzMNQ==
+  dependencies:
+    "@ethersproject/abstract-signer" "^5.5.0"
+    "@ethersproject/bignumber" "^5.6.0"
+    "@ethersproject/constants" "^5.6.0"
+    "@ethersproject/contracts" "^5.5.0"
+    "@ethersproject/providers" "^5.5.0"
+    "@ethersproject/wallet" "^5.6.0"
+    "@xinfin/osx-client-common" "1.2.1-rc8"
+    "@xinfin/osx-ethers" "1.3.0-rc1"
+    "@xinfin/osx-sdk-common" "1.5.1"
+    "@xinfin/osx-sdk-ipfs" "1.1.1"
+    graphql "^16.5.0"
+    graphql-request "^4.3.0"
+
+"@xinfin/osx-sdk-common@1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@xinfin/osx-sdk-common/-/osx-sdk-common-1.5.1.tgz#eb3a2cdd7355b8df5a863221754a9aebb986d540"
+  integrity sha512-o4cD6IRlzZWSZJSkgn1/VYJlOXtfK+8sOW+R6+tMdZ7uui7yuiGg6SlJouT7g5v4dhDhznOm9+1q2YzFfKzWfA==
+
+"@xinfin/osx-sdk-ipfs@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@xinfin/osx-sdk-ipfs/-/osx-sdk-ipfs-1.1.1.tgz#1e2e7b0d892297b534792edaadd2245cb91d841f"
+  integrity sha512-E976wmyt50G4r/jegSoapRObonVzr4h8D9unmFj8uDx5L8LNmgiPcAklErWpLLSt6CoxgC8ZqJcsqjvTma90lA==
+  dependencies:
+    "@web-std/fetch" "^4.1.0"
+    "@web-std/file" "^3.0.2"
+    "@web-std/form-data" "^3.0.2"
+    isomorphic-unfetch "^3.1.0"
+
 "@zeit/schemas@2.29.0":
   version "2.29.0"
   resolved "https://registry.yarnpkg.com/@zeit/schemas/-/schemas-2.29.0.tgz#a59ae6ebfdf4ddc66a876872dd736baa58b6696c"

@@ -9,11 +9,12 @@ import {
   TokenVotingClient,
   VotingMode,
   VotingSettings,
-} from '@aragon/sdk-client';
+} from '@xinfin/osx-sdk-client';
 import {
+  LIVE_CONTRACTS,
   PluginInstallItem,
   SupportedNetwork as sdkSupportedNetworks,
-} from '@aragon/sdk-client-common';
+} from '@xinfin/osx-client-common';
 import {parseUnits} from 'ethers/lib/utils';
 import React, {createContext, useCallback, useContext, useState} from 'react';
 import {useFormContext} from 'react-hook-form';
@@ -284,6 +285,10 @@ const CreateDaoProvider: React.FC = ({children}) => {
         const multisigPlugin = MultisigClient.encoding.getPluginInstallItem(
           params,
           network
+          // {
+          //   name:network,
+          //   chainId: CHAIN_METADATA[network as SupportedNetworks]?.id
+          // },
         );
         plugins.push(multisigPlugin);
         break;

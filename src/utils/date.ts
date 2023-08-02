@@ -1,4 +1,4 @@
-import {ProposalStatus} from '@aragon/sdk-client-common';
+import {ProposalStatus} from '@xinfin/osx-client-common';
 import {
   format,
   formatDistance,

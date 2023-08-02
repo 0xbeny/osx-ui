@@ -2,7 +2,7 @@
 
 import {infuraApiKey} from './api';
 
-export const SUPPORTED_CHAIN_ID = [1, 5, 137, 80001, 42161, 421613] as const;
+export const SUPPORTED_CHAIN_ID = [1, 5, 137, 80001, 42161, 421613, 50, 51] as const;
 export type SupportedChainID = typeof SUPPORTED_CHAIN_ID[number];
 
 export function isSupportedChainId(
@@ -20,9 +20,11 @@ const SUPPORTED_NETWORKS = [
   'mumbai',
   'arbitrum',
   'arbitrum-test',
+  'apothem',
+  'xdc'
 ] as const;
 
-export type availableNetworks = 'mainnet' | 'goerli' | 'polygon' | 'mumbai';
+export type availableNetworks = 'mainnet' | 'goerli' | 'polygon' | 'mumbai' | 'apothem' | 'xdc';
 
 export type SupportedNetworks =
   | typeof SUPPORTED_NETWORKS[number]
@@ -103,7 +105,7 @@ export const CHAIN_METADATA: ChainList = {
     etherscanApi: 'https://api.arbiscan.io/api',
     alchemyApi: 'https://arb-mainnet.g.alchemy.com/v2',
     supportsEns: false,
-    ipfs: 'https://prod.ipfs.aragon.network',
+    ipfs: import.meta.env.VITE_IPFS_API_URL,
   },
   ethereum: {
     id: 1,
@@ -126,7 +128,7 @@ export const CHAIN_METADATA: ChainList = {
     covalentApi: 'https://api.covalenthq.com/v1/eth-mainnet',
     alchemyApi: 'https://eth-mainnet.g.alchemy.com/v2',
     supportsEns: true,
-    ipfs: 'https://prod.ipfs.aragon.network',
+    ipfs: import.meta.env.VITE_IPFS_API_URL,
   },
   polygon: {
     id: 137,
@@ -149,7 +151,7 @@ export const CHAIN_METADATA: ChainList = {
     covalentApi: 'https://api.covalenthq.com/v1/matic-mainnet',
     alchemyApi: 'https://polygon-mainnet.g.alchemy.com/v2',
     supportsEns: false,
-    ipfs: 'https://prod.ipfs.aragon.network',
+    ipfs: import.meta.env.VITE_IPFS_API_URL,
   },
   'arbitrum-test': {
     id: 421613,
@@ -167,7 +169,7 @@ export const CHAIN_METADATA: ChainList = {
     etherscanApi: 'https://api-goerli.arbiscan.io/api',
     alchemyApi: 'https://arb-goerli.g.alchemy.com/v2',
     supportsEns: false,
-    ipfs: 'https://test.ipfs.aragon.network',
+    ipfs: import.meta.env.VITE_IPFS_API_URL,
   },
   goerli: {
     id: 5,
@@ -190,7 +192,7 @@ export const CHAIN_METADATA: ChainList = {
     covalentApi: 'https://api.covalenthq.com/v1/eth-goerli',
     alchemyApi: 'https://eth-goerli.g.alchemy.com/v2',
     supportsEns: true,
-    ipfs: 'https://test.ipfs.aragon.network',
+    ipfs: import.meta.env.VITE_IPFS_API_URL,
   },
   mumbai: {
     id: 80001,
@@ -213,7 +215,45 @@ export const CHAIN_METADATA: ChainList = {
     covalentApi: 'https://api.covalenthq.com/v1/matic-mumbai',
     alchemyApi: 'https://polygon-mumbai.g.alchemy.com/v2',
     supportsEns: false,
-    ipfs: 'https://test.ipfs.aragon.network',
+    ipfs: import.meta.env.VITE_IPFS_API_URL,
+  },
+  apothem: {
+    id: 51,
+    name: 'Apothem',
+    domain: 'L1 Blockchain',
+    logo: 'https://icons.llamao.fi/icons/chains/rsz_xdc.jpg',
+    explorer: 'https://apothem.xdcscan.io/',
+    testnet: true,
+    rpc: [`https://erpc.apothem.network/`, `https://apothem.xdcrpc.com/`],
+    nativeCurrency: {
+      name: 'TXDC',
+      symbol: 'TXDC',
+      decimals: 18,
+    },
+    alchemyApi: '',
+    etherscanApi: 'https://apothem.xdcscan.io/api',
+    etherscanApiKey: "",
+    supportsEns: false,
+    ipfs: import.meta.env.VITE_IPFS_API_URL,
+  },
+  xdc: {
+    id: 51,
+    name: 'XDC',
+    domain: 'L1 Blockchain',
+    logo: 'https://icons.llamao.fi/icons/chains/rsz_xdc.jpg',
+    explorer: 'https://apothem.xdcscan.io/',
+    testnet: false,
+    rpc: [`https://xdc.xdcrpc.com/      `, `wss://ews.xdc.network/`],
+    nativeCurrency: {
+      name: 'XDC',
+      symbol: 'XDC',
+      decimals: 18,
+    },
+    alchemyApi: '',
+    etherscanApi: 'https://xdc.xdcscan.io/api',
+    etherscanApiKey: "",
+    supportsEns: false,
+    ipfs: import.meta.env.VITE_IPFS_API_URL,
   },
   unsupported: {
     id: 1,

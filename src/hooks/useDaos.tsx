@@ -3,8 +3,8 @@ import {
   DaoListItem,
   DaoSortBy,
   DaoQueryParams,
-} from '@aragon/sdk-client';
-import {SortDirection} from '@aragon/sdk-client-common';
+} from '@xinfin/osx-sdk-client';
+import {SortDirection} from '@xinfin/osx-client-common';
 import {InfiniteData, useInfiniteQuery} from '@tanstack/react-query';
 
 import {CHAIN_METADATA, SupportedChainID} from 'utils/constants';

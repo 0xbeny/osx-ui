@@ -1,4 +1,4 @@
-import {MultisigProposalListItem} from '@aragon/sdk-client';
+import {MultisigProposalListItem} from '@xinfin/osx-sdk-client';
 import {CardProposal, CardProposalProps, Spinner} from '@aragon/ods';
 import {BigNumber} from 'ethers';
 import React, {useMemo} from 'react';

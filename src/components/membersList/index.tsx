@@ -1,4 +1,4 @@
-import {Erc20TokenDetails} from '@aragon/sdk-client';
+import {Erc20TokenDetails} from '@xinfin/osx-sdk-client';
 import {ListItemAddress} from '@aragon/ods';
 import {formatUnits, isAddress} from 'ethers/lib/utils';
 import React, {useEffect, useState} from 'react';

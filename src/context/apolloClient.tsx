@@ -12,8 +12,8 @@ import {
   DaoMetadata,
   InstalledPluginListItem,
   VotingMode,
-} from '@aragon/sdk-client';
-import {PluginInstallItem} from '@aragon/sdk-client-common';
+} from '@xinfin/osx-sdk-client';
+import {PluginInstallItem} from '@xinfin/osx-client-common';
 import {RestLink} from 'apollo-link-rest';
 import {CachePersistor, LocalStorageWrapper} from 'apollo3-cache-persist';
 
@@ -115,6 +115,10 @@ const arbitrumTestClient = new ApolloClient({
   cache,
   link: restLink.concat(new HttpLink({uri: SUBGRAPH_API_URL['arbitrum-test']})),
 });
+const apothemTestClient = new ApolloClient({
+  cache,
+  link: restLink.concat(new HttpLink({uri: SUBGRAPH_API_URL['apothem']})),
+});
 
 // TODO: remove undefined when all clients are defined
 const client: Record<
@@ -126,6 +130,8 @@ const client: Record<
   polygon: undefined,
   mumbai: mumbaiClient,
   arbitrum: undefined,
+  apothem: apothemTestClient,
+  xdc: undefined,
   'arbitrum-test': arbitrumTestClient,
   unsupported: undefined,
 };

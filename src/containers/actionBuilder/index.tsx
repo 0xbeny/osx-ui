@@ -1,7 +1,7 @@
 import React from 'react';
 import {useFormContext} from 'react-hook-form';
 
-import {MultisigVotingSettings} from '@aragon/sdk-client';
+import {MultisigVotingSettings} from '@xinfin/osx-sdk-client';
 import {TemporarySection} from 'components/temporary';
 import SCC from 'containers/smartContractComposer';
 import TokenMenu from 'containers/tokenMenu';

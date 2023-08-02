@@ -1,4 +1,4 @@
-import {Client, DaoDetails} from '@aragon/sdk-client';
+import {Client, DaoDetails} from '@xinfin/osx-sdk-client';
 import {JsonRpcProvider} from '@ethersproject/providers';
 import {useQuery} from '@tanstack/react-query';
 import {isAddress} from 'ethers/lib/utils';
@@ -39,6 +39,7 @@ async function fetchDaoDetails(
 
   // Note: SDK doesn't support ens names in L2 chains so we need to resolve the address first
   const daoDetails = await client.methods.getDao(daoAddressOrEns.toLowerCase());
+  
   return daoDetails;
 }
 
@@ -107,12 +108,12 @@ export const useDaoQuery = (
       redirectDaoToAddress
     );
   }, [client, daoAddressOrEns, isL2NetworkEns, provider, redirectDaoToAddress]);
-
+  
   return useQuery<DaoDetails | null>({
     queryKey: ['daoDetails', daoAddressOrEns, queryNetwork],
     queryFn,
     select: addAvatarToDao(),
-    enabled,
+    enabled: true,
     // useQuery will cache an empty data for ens names which is wrong, but this config
     // will disable caching for ens names in L2 the caching is enabled for
     // none l2 networks and l2 networks that are not ens names
@@ -137,7 +138,7 @@ export const useDaoDetailsQuery = () => {
 
   const daoAddressOrEns = dao?.toLowerCase();
   const apiResponse = useDaoQuery(daoAddressOrEns);
-
+  
   useEffect(() => {
     if (apiResponse.isFetched) {
       // navigate to 404 if the DAO is not found or there is some sort of error

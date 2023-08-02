@@ -21,7 +21,7 @@ import {
   useWatch,
 } from 'react-hook-form';
 import {StateEmpty} from 'components/stateEmpty';
-import {Erc20TokenDetails} from '@aragon/sdk-client';
+import {Erc20TokenDetails} from '@xinfin/osx-sdk-client';
 import type {WrappingFormParams} from 'context/govTokensWrapping';
 import numeral from 'numeral';
 

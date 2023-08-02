@@ -1,4 +1,4 @@
-import {MultisigVotingSettings, VotingSettings} from '@aragon/sdk-client';
+import {MultisigVotingSettings, VotingSettings} from '@xinfin/osx-sdk-client';
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {Outlet, useNavigate} from 'react-router-dom';
 

@@ -2,7 +2,7 @@
 // of a caching service provided by separate server
 // For now most of these methods will be passed the reactive
 // variables from Apollo-client
-import {DaoDetails} from '@aragon/sdk-client';
+import {DaoDetails} from '@xinfin/osx-sdk-client';
 
 import {
   NavigationDao,

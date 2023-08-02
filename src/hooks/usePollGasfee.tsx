@@ -3,7 +3,7 @@ import {useCallback, useEffect, useState} from 'react';
 
 import {useNetwork} from 'context/network';
 import {fetchTokenPrice} from 'services/prices';
-import {GasFeeEstimation} from '@aragon/sdk-client-common';
+import {GasFeeEstimation} from '@xinfin/osx-client-common';
 
 /**
  * This hook returns the gas estimation for a particular transaction and
@@ -35,7 +35,6 @@ export const usePollGasFee = (
           estimationFunction(),
           fetchTokenPrice(constants.AddressZero, network),
         ]);
-
         setTokenPrice(results[1] || 0);
         setMaxFee(results[0]?.max);
         setAverageFee(results[0]?.average);

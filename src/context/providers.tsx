@@ -9,7 +9,7 @@ import React, {createContext, useContext, useEffect, useState} from 'react';
 import {
   LIVE_CONTRACTS,
   SupportedNetwork as sdkSupportedNetworks,
-} from '@aragon/sdk-client-common';
+} from '@xinfin/osx-client-common';
 import {useWallet} from 'hooks/useWallet';
 import {
   alchemyApiKeys,
@@ -81,7 +81,11 @@ function getInfuraProvider(network: SupportedNetworks) {
     return new InfuraProvider(NW_ARB, infuraApiKey);
   } else if (network === 'arbitrum-test') {
     return new InfuraProvider(NW_ARB_GOERLI, infuraApiKey);
-  } else if (network === 'mumbai' || network === 'polygon') {
+  } else if (
+    network === 'mumbai' ||
+    network === 'polygon' ||
+    network == 'apothem'
+  ) {
     return new JsonRpcProvider(CHAIN_METADATA[network].rpc[0], {
       chainId: CHAIN_METADATA[network].id,
       name: translateToNetworkishName(network),
@@ -91,7 +95,7 @@ function getInfuraProvider(network: SupportedNetworks) {
         ].ensRegistry,
     });
   } else {
-    return new InfuraProvider(CHAIN_METADATA[network].id, infuraApiKey);
+    return new JsonRpcProvider(CHAIN_METADATA[network].rpc[0]);
   }
 }
 
@@ -111,6 +115,10 @@ export function getAlchemyProvider(chainId: number): AlchemyProvider | null {
     : null;
 }
 
+export function getJsonRpcProvider(network: SupportedNetworks): JsonRpcProvider {
+  const translatedNetwork = translateToNetworkishName(network);
+  return new JsonRpcProvider(CHAIN_METADATA[network].rpc[0])
+}
 /**
  * Returns provider based on the given chain id
  * @param chainId network chain is
@@ -121,12 +129,10 @@ export function useSpecificProvider(
 ): Providers['infura'] {
   const network = getSupportedNetworkByChainId(chainId) as SupportedNetworks;
 
-  const [infuraProvider, setInfuraProvider] = useState(
-    getInfuraProvider(network)
-  );
+  const [infuraProvider, setInfuraProvider] = useState(getJsonRpcProvider(network));
 
   useEffect(() => {
-    setInfuraProvider(getInfuraProvider(network));
+    setInfuraProvider(getJsonRpcProvider(network));
   }, [chainId, network]);
 
   return infuraProvider;

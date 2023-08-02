@@ -21,7 +21,7 @@ import {SupportedVotingSettings} from 'utils/types';
 import ConfigureActions from 'containers/configureActions';
 import {actionsAreValid} from 'utils/validators';
 import {useActionsContext} from 'context/actions';
-import {DaoDetails} from '@aragon/sdk-client';
+import {DaoDetails} from '@xinfin/osx-sdk-client';
 
 interface WithdrawStepperProps {
   enableTxModal: () => void;

@@ -81,6 +81,7 @@ const Dashboard: React.FC = () => {
     isLoading: liveDaoLoading,
     isSuccess,
   } = useDaoQuery(urlAddressOrEns, pollInterval);
+  
   const liveAddressOrEns = toDisplayEns(liveDao?.ensDomain) || liveDao?.address;
 
   const {avatar: liveDaoAvatar} = useResolveDaoAvatar(

@@ -1,4 +1,4 @@
-import {MultisigClient, TokenVotingClient} from '@aragon/sdk-client';
+import {MultisigClient, TokenVotingClient} from '@xinfin/osx-sdk-client';
 import {useEffect, useState} from 'react';
 
 import {useClient} from './useClient';

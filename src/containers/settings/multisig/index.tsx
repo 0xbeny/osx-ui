@@ -1,7 +1,7 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {generatePath, useNavigate} from 'react-router-dom';
-import {MultisigVotingSettings} from '@aragon/sdk-client';
+import {MultisigVotingSettings} from '@xinfin/osx-sdk-client';
 import {Link} from '@aragon/ods';
 
 import {Dd, DescriptionListContainer, Dl, Dt} from 'components/descriptionList';

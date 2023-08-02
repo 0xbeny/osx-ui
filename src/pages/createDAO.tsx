@@ -122,7 +122,7 @@ const CreateDAO: React.FC = () => {
     // get the default expected network using the connected wallet, use ethereum
     // mainnet in case user accesses the flow without wallet connection. Ideally,
     // this should not happen
-    const defaultNetwork = getSupportedNetworkByChainId(chainId) || 'ethereum';
+    const defaultNetwork = getSupportedNetworkByChainId(chainId) || 'apothem';
 
     // update the network context
     setNetwork(defaultNetwork);

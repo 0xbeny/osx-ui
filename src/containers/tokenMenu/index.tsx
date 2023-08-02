@@ -1,4 +1,4 @@
-import {AssetBalance} from '@aragon/sdk-client';
+import {AssetBalance} from '@xinfin/osx-sdk-client';
 import {ButtonText, IconAdd, IconStorage, SearchInput} from '@aragon/ods';
 import React, {useCallback, useState} from 'react';
 import {useTranslation} from 'react-i18next';

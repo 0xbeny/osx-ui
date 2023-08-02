@@ -8,7 +8,7 @@ import {
   TokenVotingProposalListItem,
   VoteValues,
   VotingSettings,
-} from '@aragon/sdk-client';
+} from '@xinfin/osx-sdk-client';
 import {BigNumber} from 'ethers';
 
 import {TimeFilter, TransferTypes} from './constants';

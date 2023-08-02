@@ -1,8 +1,8 @@
-import {Client, Context as SdkContext, ContextParams} from '@aragon/sdk-client';
+import {Client, Context as SdkContext, ContextParams} from '@xinfin/osx-sdk-client';
 import {
   LIVE_CONTRACTS,
   SupportedNetworksArray,
-} from '@aragon/sdk-client-common';
+} from '@xinfin/osx-client-common';
 
 import {useNetwork} from 'context/network';
 import React, {createContext, useContext, useEffect, useState} from 'react';
@@ -41,7 +41,7 @@ export const UseClientProvider: React.FC = ({children}) => {
   const [client, setClient] = useState<Client>();
   const {network} = useNetwork();
   const [context, setContext] = useState<SdkContext>();
-
+  
   useEffect(() => {
     const translatedNetwork = translateToNetworkishName(network);
 
@@ -57,26 +57,32 @@ export const UseClientProvider: React.FC = ({children}) => {
       {
         url: `${CHAIN_METADATA[network].ipfs}/api/v0`,
         headers: {
-          'X-API-KEY': (import.meta.env.VITE_IPFS_API_KEY as string) || '',
+          Authorization: `Basic ${Buffer.from(
+            import.meta.env.VITE_IPFS_API_KEY + ":" + import.meta.env.VITE_IPFS_API_SECRET
+          ).toString("base64")}`,
         },
-      },
+        },
     ];
-
+    
+    
     const contextParams: ContextParams = {
       daoFactoryAddress: LIVE_CONTRACTS[translatedNetwork].daoFactory,
-      network: translatedNetwork,
+      network: {
+        name: translatedNetwork,
+        chainId: CHAIN_METADATA[network].id
+      },
       signer: signer ?? undefined,
       web3Providers: CHAIN_METADATA[network].rpc[0],
       ipfsNodes,
+      ensRegistryAddress: LIVE_CONTRACTS[translatedNetwork].ensRegistry,
       graphqlNodes: [{url: SUBGRAPH_API_URL[network]!}],
     };
-
     const sdkContext = new SdkContext(contextParams);
 
     setClient(new Client(sdkContext));
     setContext(sdkContext);
   }, [network, signer]);
-
+  
   const value: ClientContext = {
     client,
     context,

@@ -1,4 +1,4 @@
-import {Erc20TokenDetails, InstalledPluginListItem} from '@aragon/sdk-client';
+import {Erc20TokenDetails, InstalledPluginListItem} from '@xinfin/osx-sdk-client';
 import {Link, VoterType} from '@aragon/ods';
 import TipTapLink from '@tiptap/extension-link';
 import {EditorContent, useEditor} from '@tiptap/react';

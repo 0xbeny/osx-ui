@@ -1,4 +1,4 @@
-import {Erc20TokenDetails, Erc20WrapperTokenDetails} from '@aragon/sdk-client';
+import {Erc20TokenDetails, Erc20WrapperTokenDetails} from '@xinfin/osx-sdk-client';
 import {useEffect, useState} from 'react';
 
 import {HookData} from 'utils/types';

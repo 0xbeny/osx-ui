@@ -1,4 +1,4 @@
-import {VotingMode} from '@aragon/sdk-client';
+import {VotingMode} from '@xinfin/osx-sdk-client';
 import React, {useMemo} from 'react';
 import {useTranslation} from 'react-i18next';
 

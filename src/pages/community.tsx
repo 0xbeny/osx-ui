@@ -27,7 +27,7 @@ import {htmlIn} from 'utils/htmlIn';
 import useScreen from 'hooks/useScreen';
 import {useGovTokensWrapping} from 'context/govTokensWrapping';
 import {useExistingToken} from 'hooks/useExistingToken';
-import {Erc20WrapperTokenDetails} from '@aragon/sdk-client';
+import {Erc20WrapperTokenDetails} from '@xinfin/osx-sdk-client';
 
 const MEMBERS_PER_PAGE = 20;
 

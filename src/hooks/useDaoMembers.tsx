@@ -1,4 +1,4 @@
-import {Erc20TokenDetails, TokenVotingMember} from '@aragon/sdk-client';
+import {Erc20TokenDetails, TokenVotingMember} from '@xinfin/osx-sdk-client';
 import {QueryClient} from '@tanstack/react-query';
 import {useNetwork} from 'context/network';
 import {useSpecificProvider} from 'context/providers';

@@ -4,7 +4,7 @@
 import {
   SupportedNetworksArray,
   SupportedNetwork,
-} from '@aragon/sdk-client-common';
+} from '@xinfin/osx-client-common';
 import React, {useEffect} from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import styled from 'styled-components';

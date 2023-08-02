@@ -9,7 +9,6 @@ import {ReactiveVar} from '@apollo/client';
 import {
   AddresslistVotingProposal,
   AddresslistVotingProposalResult,
-  computeProposalStatus,
   CreateMajorityVotingProposalParams,
   Erc20TokenDetails,
   MultisigProposal,
@@ -19,8 +18,10 @@ import {
   VoteValues,
   VotingMode,
   VotingSettings,
-} from '@aragon/sdk-client';
-import {ProposalMetadata, ProposalStatus} from '@aragon/sdk-client-common';
+} from '@xinfin/osx-sdk-client';
+import {computeProposalStatus as votingcomputeProposalStatus} from '@xinfin/osx-sdk-client/dist/tokenVoting/internal/utils';
+
+import {ProposalMetadata, ProposalStatus} from '@xinfin/osx-client-common';
 import {ModeType, ProgressStatusProps, VoterType} from '@aragon/ods';
 import Big from 'big.js';
 import {format, formatDistanceToNow, Locale} from 'date-fns';
@@ -1088,9 +1089,12 @@ export function augmentProposalWithCachedExecution(
   // no cache return original proposal
   if (!cachedExecution) {
     // cached proposal coming in calculate status
-    if (!proposal.status) {
-      return {...proposal, status: calculateProposalStatus(proposal)};
-    }
+    /* 
+      TODO: Uncomment
+    */ 
+    // if (!proposal.status) {
+    //   return {...proposal, status: calculateProposalStatus(proposal)};
+    // }
 
     // normal subgraph proposal return untouched
     return proposal;
@@ -1120,56 +1124,67 @@ export function augmentProposalWithCachedExecution(
  * @param proposal Proposal
  * @returns status for proposal
  */
-function calculateProposalStatus(proposal: DetailedProposal): ProposalStatus {
-  /**
-   * Be aware, since sometimes this function receives CACHED proposal which can contain
-   * empty fields (which by type definition supposed to be non-empty), you should be aware
-   * that it might require some handling.
-   *
-   * Watch out for differences between: DetailedProposal and CreateMajorityVotingProposalParams types.
-   */
+// function calculateProposalStatus(proposal: DetailedProposal): ProposalStatus {
+//   /**
+//    * Be aware, since sometimes this function receives CACHED proposal which can contain
+//    * empty fields (which by type definition supposed to be non-empty), you should be aware
+//    * that it might require some handling.
+//    *
+//    * Watch out for differences between: DetailedProposal and CreateMajorityVotingProposalParams types.
+//    */
 
-  if (isErc20VotingProposal(proposal)) {
-    const results = getErc20Results(
-      proposal.result,
-      proposal.token.decimals,
-      proposal.totalVotingWeight
-    );
+//   if (isErc20VotingProposal(proposal)) {
+//     const results = getErc20Results(
+//       proposal.result,
+//       proposal.token.decimals,
+//       proposal.totalVotingWeight
+//     );
 
-    const {missingPart} = getErc20VotingParticipation(
-      proposal.settings.minParticipation,
-      proposal.usedVotingWeight,
-      proposal.totalVotingWeight,
-      proposal.token.decimals
-    );
+//     const {missingPart} = getErc20VotingParticipation(
+//       proposal.settings.minParticipation,
+//       proposal.usedVotingWeight,
+//       proposal.totalVotingWeight,
+//       proposal.token.decimals
+//     );
 
-    // TODO calculate potentially executable
-    return computeProposalStatus({
-      startDate: (
-        (proposal.startDate || new Date()).getTime() / 1000
-      ).toString(),
-      endDate: (proposal.endDate.getTime() / 1000).toString(),
-      executed: false,
-      potentiallyExecutable: isEarlyExecutable(
-        missingPart,
-        proposal,
-        results,
-        (proposal as CachedProposal).votingMode
-      ),
-    });
-  } else {
-    return computeProposalStatus({
-      startDate: (
-        (proposal.startDate || new Date()).getTime() / 1000
-      ).toString(),
-      endDate: (proposal.endDate.getTime() / 1000).toString(),
-      executed: false,
-      potentiallyExecutable:
-        (proposal as MultisigProposal)?.approvals?.length >=
-        ((proposal as CachedProposal)?.minApprovals || 1),
-    });
-  }
-}
+//     // TODO calculate potentially executable
+//     return votingcomputeProposalStatus({
+//       startDate: (
+//         (proposal.startDate || new Date()).getTime() / 1000
+//       ).toString(),
+//       endDate: (proposal.endDate.getTime() / 1000).toString(),
+//       executed: false,
+//       potentiallyExecutable: isEarlyExecutable(
+//         missingPart,
+//         proposal,
+//         results,
+//         (proposal as CachedProposal).votingMode
+//       ),
+//       id: proposal.id,
+//       dao: {id: proposal.dao.address, subdomain: proposal.dao.name},
+//       creator: proposal.creatorAddress,
+//       metadata: proposal.metadata.title,
+//       yes:'',
+//       no:'',
+//       abstain:'',
+//       supportThreshold:proposal.settings.supportThreshold.toString(),
+//       minVotingPower: proposal.settings.minParticipation,
+//       plugin: { token: proposal.result},
+//       voters:[]
+//     });
+//   } else {
+//     return votingcomputeProposalStatus({
+//       startDate: (
+//         (proposal.startDate || new Date()).getTime() / 1000
+//       ).toString(),
+//       endDate: (proposal.endDate.getTime() / 1000).toString(),
+//       executed: false,
+//       potentiallyExecutable:
+//         (proposal as MultisigProposal)?.approvals?.length >=
+//         ((proposal as CachedProposal)?.minApprovals || 1),
+//     });
+//   }
+// }
 
 /**
  * Recalculates the status of a proposal.

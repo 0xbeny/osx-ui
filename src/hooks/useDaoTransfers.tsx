@@ -1,6 +1,6 @@
 import {useReactiveVar} from '@apollo/client';
-import {Transfer, TransferSortBy, TransferType} from '@aragon/sdk-client';
-import {SortDirection} from '@aragon/sdk-client-common';
+import {Transfer, TransferSortBy, TransferType} from '@xinfin/osx-sdk-client';
+import {SortDirection} from '@xinfin/osx-client-common';
 import {useEffect, useMemo, useState} from 'react';
 
 import {pendingDeposits} from 'context/apolloClient';

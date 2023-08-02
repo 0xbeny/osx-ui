@@ -1,4 +1,4 @@
-import {Erc20TokenDetails, VotingSettings} from '@aragon/sdk-client';
+import {Erc20TokenDetails, VotingSettings} from '@xinfin/osx-sdk-client';
 import React from 'react';
 import {useFormContext} from 'react-hook-form';
 import {useTranslation} from 'react-i18next';

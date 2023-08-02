@@ -1,4 +1,4 @@
-import {DaoDetails, MultisigVotingSettings} from '@aragon/sdk-client';
+import {DaoDetails, MultisigVotingSettings} from '@xinfin/osx-sdk-client';
 import {
   AlertInline,
   ButtonText,

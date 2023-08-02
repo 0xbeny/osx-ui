@@ -5,8 +5,8 @@ import {
   ProposalCreationSteps,
   VotingMode,
   VotingSettings,
-} from '@aragon/sdk-client';
-import {DaoAction, ProposalMetadata} from '@aragon/sdk-client-common';
+} from '@xinfin/osx-sdk-client';
+import {DaoAction, ProposalMetadata} from '@xinfin/osx-client-common';
 import {withTransaction} from '@elastic/apm-rum-react';
 import React, {useCallback, useEffect, useState} from 'react';
 import {useFormContext, useFormState} from 'react-hook-form';

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {generatePath, useNavigate} from 'react-router-dom';
-import {VotingMode, VotingSettings} from '@aragon/sdk-client';
+import {VotingMode, VotingSettings} from '@xinfin/osx-sdk-client';
 import {Link, Tag} from '@aragon/ods';
 
 import {Dd, DescriptionListContainer, Dl, Dt} from 'components/descriptionList';

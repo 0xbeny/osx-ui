@@ -1,5 +1,5 @@
-import {AssetBalance} from '@aragon/sdk-client';
-import {TokenType} from '@aragon/sdk-client-common';
+import {AssetBalance} from '@xinfin/osx-sdk-client';
+import {TokenType} from '@xinfin/osx-client-common';
 import {useEffect, useMemo, useState} from 'react';
 import {alchemyApiKeys, CHAIN_METADATA} from 'utils/constants';
 

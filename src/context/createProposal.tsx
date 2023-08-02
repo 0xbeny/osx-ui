@@ -8,12 +8,12 @@ import {
   TokenVotingClient,
   VotingSettings,
   WithdrawParams,
-} from '@aragon/sdk-client';
+} from '@xinfin/osx-sdk-client';
 import {
   DaoAction,
   ProposalMetadata,
   TokenType,
-} from '@aragon/sdk-client-common';
+} from '@xinfin/osx-client-common';
 import {hexToBytes} from '@aragon/sdk-common';
 import {ethers} from 'ethers';
 import React, {useCallback, useEffect, useMemo, useState} from 'react';

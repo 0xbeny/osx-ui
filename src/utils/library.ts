@@ -10,13 +10,13 @@ import {
   Context as SdkContext,
   TokenVotingClient,
   VotingMode,
-} from '@aragon/sdk-client';
+} from '@xinfin/osx-sdk-client';
 import {fetchEnsAvatar} from '@wagmi/core';
 
 import {
   DaoAction,
   SupportedNetwork as SdkSupportedNetworks,
-} from '@aragon/sdk-client-common';
+} from '@xinfin/osx-client-common';
 import {bytesToHex, resolveIpfsCid} from '@aragon/sdk-common';
 import {NavigationDao} from 'context/apolloClient';
 import {BigNumber, BigNumberish, constants, ethers, providers} from 'ethers';
@@ -659,7 +659,6 @@ export function translateToNetworkishName(
   if (typeof appNetwork !== 'string') {
     return 'unsupported';
   }
-
   switch (appNetwork) {
     case 'polygon':
       return SdkSupportedNetworks.POLYGON;
@@ -669,6 +668,10 @@ export function translateToNetworkishName(
       return SdkSupportedNetworks.MAINNET;
     case 'goerli':
       return SdkSupportedNetworks.GOERLI;
+    case 'apothem':
+      return SdkSupportedNetworks.APOTHEM;
+    case 'xdc':
+      return SdkSupportedNetworks.XDC;
   }
 
   return 'unsupported';
