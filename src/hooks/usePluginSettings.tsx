@@ -1,8 +1,9 @@
 import {MultisigVotingSettings, VotingSettings} from '@xinfin/osx-sdk-client';
 import {useEffect, useState} from 'react';
 import {HookData, SupportedVotingSettings} from 'utils/types';
-
+import {DaofinPlugin} from '@xinfin/osx-daofin-contracts-ethers';
 import {PluginTypes, usePluginClient} from './usePluginClient';
+import {DaofinClient} from '@xinfin/osx-daofin-sdk-client';
 
 export function isTokenVotingSettings(
   settings: SupportedVotingSettings | undefined
@@ -43,6 +44,40 @@ export function usePluginSettings(
 
         const settings = await client?.methods.getVotingSettings(pluginAddress);
         if (settings) setData(settings as VotingSettings);
+      } catch (err) {
+        console.error(err);
+        setError(err as Error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    getPluginSettings();
+  }, [client?.methods, pluginAddress]);
+
+  return {data, error, isLoading};
+}
+export function useDaofinElectionPeriods(
+  pluginAddress: string
+): HookData<DaofinPlugin.ElectionPeriodStruct[]> {
+  const [data, setData] = useState<DaofinPlugin.ElectionPeriodStruct[]>(
+    [] as DaofinPlugin.ElectionPeriodStruct[]
+  );
+  const [error, setError] = useState<Error>();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const client = usePluginClient('any');
+
+  useEffect(() => {
+    async function getPluginSettings() {
+      try {
+        setIsLoading(true);
+        console.log({client});
+        
+        const settings = await client?.methods.getElectionPeriods(
+          pluginAddress
+        );
+        if (settings) setData(settings as DaofinPlugin.ElectionPeriodStruct[]);
       } catch (err) {
         console.error(err);
         setError(err as Error);

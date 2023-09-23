@@ -181,7 +181,7 @@ const CreateDAO: React.FC = () => {
       }
       return true;
       // if token based dao
-    } else {
+    } else if (membership === 'token') {
       if (isCustomToken === true) {
         if (
           !dirtyFields.tokenName ||
@@ -208,6 +208,8 @@ const CreateDAO: React.FC = () => {
           return false;
         return true;
       }
+    }else if (membership === 'daofin'){
+      return true
     }
   }, [
     membership,

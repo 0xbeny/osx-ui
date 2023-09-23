@@ -184,6 +184,7 @@ async function fetchTokenPrice(
   try {
     const res = await fetch(url);
     const data = await res.json();
+    console.log({data});
 
     return Object.values(data as object)[0]?.usd as number;
   } catch (error) {

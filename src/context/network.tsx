@@ -97,7 +97,7 @@ export function NetworkProvider({children}: NetworkProviderProps) {
     setNetworkState(determineNetwork(networkUrlSegment, chainId, status));
   }, [chainId, networkUrlSegment, status]);
 
-  const isL2Network = ['polygon', 'mumbai', 'apothem'].includes(networkState);
+  const isL2Network = ['polygon', 'mumbai',].includes(networkState);
 
   const changeNetwork = useCallback(
     (network: SupportedNetworks) => {

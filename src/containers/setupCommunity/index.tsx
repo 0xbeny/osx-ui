@@ -10,6 +10,7 @@ import {MultisigEligibility} from 'components/multisigEligibility';
 import {FormSection} from 'containers/setupVotingForm';
 import {ToggleCheckList} from 'containers/setupVotingForm/multisig';
 import AddExistingToken from './addExistingToken';
+import { CommitteeSettings } from 'components/CommitteeSettings';
 
 const SetupCommunityForm: React.FC = () => {
   const {t} = useTranslation();
@@ -34,6 +35,8 @@ const SetupCommunityForm: React.FC = () => {
       setValue('eligibilityType', 'token');
     } else if (membership === 'multisig') {
       setValue('eligibilityType', 'multisig');
+    }else if(membership === 'daofin'){
+      setValue('eligibilityType', 'daofin');
     }
   }, [membership, setValue]);
 
@@ -55,7 +58,7 @@ const SetupCommunityForm: React.FC = () => {
           name="membership"
           rules={{required: 'Validate'}}
           control={control}
-          defaultValue="token"
+          defaultValue="daofin"
           render={({field: {onChange, value}}) => (
             <>
               <CheckboxListItem
@@ -79,7 +82,17 @@ const SetupCommunityForm: React.FC = () => {
                 multiSelect={false}
                 {...(value === 'multisig' ? {type: 'active'} : {})}
               />
-
+              {/* Daofin */}
+              <CheckboxListItem
+                label={t('createDAO.step3.daofin')}
+                helptext={t('createDAO.step3.daofinSubtitle')}
+                onClick={() => {
+                  resetTokenFields();
+                  onChange('daofin');
+                }}
+                multiSelect={false}
+                {...(value === 'daofin' ? {type: 'active'} : {})}
+              />
               {/* Address List Dao has been disabled */}
               {/* <CheckboxListItem
                   label={t('createDAO.step3.walletMemberShip')}
@@ -134,6 +147,20 @@ const SetupCommunityForm: React.FC = () => {
             />
           </FormSection>
           {isCustomToken ? <CreateNewToken /> : <AddExistingToken />}
+        </>
+      )}
+      {/* Daofin Type */}
+      {membership === 'daofin' && (
+        <>
+          <FormItem>
+            {/* <MultisigWallets /> */}
+          </FormItem>
+          <FormItem>
+            {/* <MultisigEligibility /> */}
+          </FormItem>
+          <FormItem>
+            {/* <CommitteeSettings /> */}
+          </FormItem>
         </>
       )}
     </>

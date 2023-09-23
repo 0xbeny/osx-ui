@@ -36,6 +36,7 @@ const ExplorePage = lazy(() => import('pages/explore'));
 const NotFoundPage = lazy(() => import('pages/notFound'));
 
 const DashboardPage = lazy(() => import('pages/dashboard'));
+const DaofinDashboardPage = lazy(() => import('pages/daofinDashboard'));
 const FinancePage = lazy(() => import('pages/finance'));
 const GovernancePage = lazy(() => import('pages/governance'));
 const CommunityPage = lazy(() => import('pages/community'));
@@ -95,7 +96,9 @@ function App() {
           </Route>
           <Route path="/daos/:network/:dao">
             <Route element={<DaoWrapper />}>
-              <Route path="dashboard" element={<DashboardPage />} />
+              {/* <Route path="dashboard" element={<DashboardPage />} /> */}
+              <Route path="dashboard" element={<DaofinDashboardPage />} />
+
               <Route path="finance" element={<FinancePage />} />
               <Route path="finance/tokens" element={<TokensPage />} />
               <Route path="finance/transfers" element={<TransfersPage />} />

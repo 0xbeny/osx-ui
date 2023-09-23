@@ -2,15 +2,20 @@ import {MultisigClient, TokenVotingClient} from '@xinfin/osx-sdk-client';
 import {useEffect, useState} from 'react';
 
 import {useClient} from './useClient';
-
+import {DaofinClient, DaofinPluginContext} from '@xinfin/osx-daofin-sdk-client';
+import {getNetwork} from '@ethersproject/networks';
 export type PluginTypes =
   | 'token-voting.plugin.dao.eth'
-  | 'multisig.plugin.dao.eth';
+  | 'multisig.plugin.dao.eth'
+  | 'daofin'
+  | 'any';
 
 type PluginType<T> = T extends 'token-voting.plugin.dao.eth'
   ? TokenVotingClient
   : T extends 'multisig.plugin.dao.eth'
   ? MultisigClient
+  : T extends 'daofin'
+  ? DaofinClient
   : never;
 
 export function isTokenVotingClient(
@@ -39,10 +44,9 @@ export const usePluginClient = <T extends PluginTypes = PluginTypes>(
 ): PluginType<T> | undefined => {
   const [pluginClient, setPluginClient] = useState<PluginType<PluginTypes>>();
 
-  const {client, context} = useClient();
-
+  const {client, context, daofinContext, daofinClient} = useClient();
   useEffect(() => {
-    if (!client || !context) return;
+    if (!client || !context || !daofinContext) return;
 
     if (!pluginType) {
       setPluginClient(undefined);
@@ -54,8 +58,13 @@ export const usePluginClient = <T extends PluginTypes = PluginTypes>(
         case 'token-voting.plugin.dao.eth':
           setPluginClient(new TokenVotingClient(context));
           break;
+        // case 'daofin':
+        //   setPluginClient(new DaofinClient(daofinContext));
+        //   break;
+
         default:
-          throw new Error('The requested plugin type is invalid');
+          setPluginClient(new DaofinClient(daofinContext));
+          break;
       }
     }
   }, [client, context, pluginType]);

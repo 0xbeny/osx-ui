@@ -644,6 +644,8 @@ export const translateToAppNetwork = (
       return 'mumbai';
     case 'matic':
       return 'polygon';
+    case 'apothem':
+      return 'apothem';
   }
   return 'unsupported';
 };

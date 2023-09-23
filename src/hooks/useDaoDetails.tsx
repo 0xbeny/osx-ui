@@ -39,7 +39,7 @@ async function fetchDaoDetails(
 
   // Note: SDK doesn't support ens names in L2 chains so we need to resolve the address first
   const daoDetails = await client.methods.getDao(daoAddressOrEns.toLowerCase());
-  
+
   return daoDetails;
 }
 
@@ -74,13 +74,13 @@ export const useDaoQuery = (
 
   const redirectDaoToAddress = useCallback(
     (address: string | null) => {
-      if (!address)
+      if (!address) {
         // if the the resolver doesn't have an address, redirect to 404
         navigate(NotFound, {
           replace: true,
           state: {incorrectDao: daoAddressOrEns},
         });
-
+      }
       // replace the ens name with the address in the url
       const segments = location.pathname.split('/');
       const daoIndex = segments.findIndex(
@@ -108,12 +108,12 @@ export const useDaoQuery = (
       redirectDaoToAddress
     );
   }, [client, daoAddressOrEns, isL2NetworkEns, provider, redirectDaoToAddress]);
-  
+
   return useQuery<DaoDetails | null>({
     queryKey: ['daoDetails', daoAddressOrEns, queryNetwork],
     queryFn,
     select: addAvatarToDao(),
-    enabled: true,
+    enabled,
     // useQuery will cache an empty data for ens names which is wrong, but this config
     // will disable caching for ens names in L2 the caching is enabled for
     // none l2 networks and l2 networks that are not ens names
@@ -138,15 +138,16 @@ export const useDaoDetailsQuery = () => {
 
   const daoAddressOrEns = dao?.toLowerCase();
   const apiResponse = useDaoQuery(daoAddressOrEns);
-  
+
   useEffect(() => {
     if (apiResponse.isFetched) {
       // navigate to 404 if the DAO is not found or there is some sort of error
       if (apiResponse.error || apiResponse.data === null) {
-        navigate(NotFound, {
-          replace: true,
-          state: {incorrectDao: daoAddressOrEns},
-        });
+        // TODO: uncomment
+        // navigate(NotFound, {
+        //   replace: true,
+        //   state: {incorrectDao: daoAddressOrEns},
+        // });
       }
 
       //navigate to url with ens domain

@@ -233,7 +233,7 @@ export const CHAIN_METADATA: ChainList = {
     alchemyApi: '',
     etherscanApi: 'https://apothem.xdcscan.io/api',
     etherscanApiKey: "",
-    supportsEns: false,
+    supportsEns: true,
     ipfs: import.meta.env.VITE_IPFS_API_URL,
   },
   xdc: {

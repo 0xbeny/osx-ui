@@ -756,7 +756,9 @@
       "descriptionLinkLabel": "read this guide",
       "descriptionLinkURL": "https://aragon.org/how-to/set-up-your-dao-governance-in-8-steps",
       "distributeTokensHelpertextLinkLabel": "read our guide",
-      "distributeTokensHelpertextLinkURL": "https://aragon.org/how-to/distribute-a-dao-governance-token"
+      "distributeTokensHelpertextLinkURL": "https://aragon.org/how-to/distribute-a-dao-governance-token",
+      "daofin":"Daofin",
+      "daofinSubtitle":"Daofin some subtitle"
     },
     "step4": {
       "label": "Step 4",

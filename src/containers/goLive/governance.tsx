@@ -28,7 +28,8 @@ const Governance: React.FC = () => {
   } = getValues();
 
   const isGovTokenRequiresWrapping = !isCustomToken && tokenType === 'ERC-20';
-
+  console.log({membership});
+  
   return (
     <Controller
       name="reviewCheck.governance"

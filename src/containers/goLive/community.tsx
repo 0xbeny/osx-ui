@@ -221,7 +221,7 @@ const Community: React.FC = () => {
             </>
           )}
 
-          <CommunityAddressesModal tokenMembership={membership === 'token'} />
+          {/* <CommunityAddressesModal tokenMembership={membership === 'token'} /> */}
         </DescriptionListContainer>
       )}
     />

@@ -43,7 +43,7 @@ export const MultisigEligibility = () => {
                   {...(value === 'multisig' ? {type: 'active'} : {})}
                 />
               </CheckboxListItemWrapper>
-              <CheckboxListItemWrapper>
+              {/* <CheckboxListItemWrapper>
                 <CheckboxListItem
                   label={t('createDAO.step3.eligibility.anyWallet.title')}
                   helptext={t(
@@ -55,7 +55,7 @@ export const MultisigEligibility = () => {
                   multiSelect={false}
                   {...(value === 'anyone' ? {type: 'active'} : {})}
                 />
-              </CheckboxListItemWrapper>
+              </CheckboxListItemWrapper> */}
             </CheckboxItemsContainer>
             {value === 'anyone' && (
               <AlertInline

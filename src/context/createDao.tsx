@@ -15,7 +15,7 @@ import {
   PluginInstallItem,
   SupportedNetwork as sdkSupportedNetworks,
 } from '@xinfin/osx-client-common';
-import {parseUnits} from 'ethers/lib/utils';
+import {parseEther, parseUnits} from 'ethers/lib/utils';
 import React, {createContext, useCallback, useContext, useState} from 'react';
 import {useFormContext} from 'react-hook-form';
 import {useTranslation} from 'react-i18next';
@@ -31,15 +31,22 @@ import {CreateDaoFormData} from 'pages/createDAO';
 import {trackEvent} from 'services/analytics';
 import {
   CHAIN_METADATA,
+  JudiciaryCommittee,
+  MasterNodeCommittee,
+  PeoplesHouseCommittee,
   SupportedNetworks,
   TransactionState,
+  XdcValidator,
 } from 'utils/constants';
 import {getSecondsFromDHM} from 'utils/date';
 import {readFile, translateToNetworkishName} from 'utils/library';
 import {Dashboard} from 'utils/paths';
 import {useGlobalModalContext} from './globalModals';
 import {useNetwork} from './network';
-
+import {DaofinClient} from '@xinfin/osx-daofin-sdk-client';
+import { zeroAddress } from 'viem';
+import { BigNumber, ethers } from 'ethers';
+import {DaofinPlugin__factory} from "@xinfin/osx-daofin-contracts-ethers"
 const DEFAULT_TOKEN_DECIMALS = 18;
 
 type CreateDaoContextType = {
@@ -52,7 +59,7 @@ const CreateDaoContext = createContext<CreateDaoContextType | null>(null);
 const CreateDaoProvider: React.FC = ({children}) => {
   const {open} = useGlobalModalContext();
   const navigate = useNavigate();
-  const {isOnWrongNetwork, provider} = useWallet();
+  const {isOnWrongNetwork, provider,address} = useWallet();
   const {network} = useNetwork();
   const {t} = useTranslation();
   const {getValues} = useFormContext<CreateDaoFormData>();
@@ -81,7 +88,9 @@ const CreateDaoProvider: React.FC = ({children}) => {
     setCreationProcessState(TransactionState.WAITING);
     setShowModal(true);
     const creationParams = await getDaoSettings();
-    setDaoCreationData(creationParams);
+    console.log(creationParams);
+    
+    setDaoCreationData({...creationParams});
   };
 
   // Handler for modal button click
@@ -312,6 +321,44 @@ const CreateDaoProvider: React.FC = ({children}) => {
         plugins.push(tokenVotingPlugin);
         break;
       }
+      case 'daofin': {
+        
+        const daofinPlugin = DaofinClient.encoding.getPluginInstallItem(
+          [
+            [parseEther('1')],
+            XdcValidator,
+            [
+              {
+                name: MasterNodeCommittee,
+                minDuration: 1,
+                minParticipation: 1,
+                minVotingPower: 1,
+                supportThreshold: 1,
+              },
+              {
+                name: JudiciaryCommittee,
+                minDuration: 1,
+                minParticipation: 1,
+                minVotingPower: 1,
+                supportThreshold: 1,
+              },
+              {
+                name: PeoplesHouseCommittee,
+                minDuration: 1,
+                minParticipation: 1,
+                minVotingPower: 1,
+                supportThreshold: 1,
+              },
+            ],
+            [Math.floor(Date.now() / 1000)],
+            [address],
+          ],
+          network
+        );
+        
+        plugins.push(daofinPlugin);
+        break;
+      }
       default:
         throw new Error(`Unknown dao type: ${membership}`);
     }
@@ -355,6 +402,8 @@ const CreateDaoProvider: React.FC = ({children}) => {
     getVoteSettings,
   ]);
 
+
+  
   // estimate creation fees
   const estimateCreationFees = useCallback(async () => {
     if (daoCreationData) return client?.estimation.createDao(daoCreationData);
